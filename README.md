@@ -1,3 +1,18 @@
+# Function Pulling Container (FPC) Scheduler
+
+This Python script implements a Function Pulling Container (FPC) Scheduler, which is responsible for managing and scheduling requests for different functions across multiple containers in parallel. The scheduler aims to efficiently handle incoming requests and allocate resources (containers) dynamically based on the load and the average execution time of the functions.
+
+## Overview
+
+The FPC Scheduler is designed to handle multiple functions simultaneously. For each function, it maintains a separate request queue, a priority queue for containers, and a set of containers that can execute requests for that function in parallel. The scheduler periodically checks the request queues and adjusts the number of containers based on the current load and the average execution time of the function.
+
+The main components of the FPC Scheduler are:
+
+- `Container`: Represents an individual container that can execute requests for a specific function.
+- `Scheduler`: The main coordinator that manages different `FPCSchedulerForFunction` instances for each function.
+- `FPCSchedulerForFunction`: Handles request scheduling, container provisioning, and snapshot management for a specific function.
+- `Request` and `Response`: Represent incoming requests and their corresponding responses.
+
 ## Running the Script
 
 To run the FPC Scheduler script, follow these steps:
@@ -8,35 +23,21 @@ To run the FPC Scheduler script, follow these steps:
 
 3. Run the following command:
 
+```
 python3 FPCScheduler.py
+```
 
 This command will execute the `FPCScheduler.py` script and start the FPC Scheduler simulation.
 
 After running the command, you should see the output from the simulation in your terminal or command prompt window. The output will show the various stages of the FPC Scheduler, including handling requests, creating containers, processing responses, updating average execution times, and renewing snapshots.
 
-
-# Function Parallel Container (FPC) Scheduler
-
-This Python script implements a Function Parallel Container (FPC) Scheduler, which is responsible for managing and scheduling requests for different functions across multiple containers. The scheduler aims to efficiently handle incoming requests and allocate resources (containers) dynamically based on the load and the average execution time of the functions.
-
-## Overview
-
-The FPC Scheduler is designed to handle multiple functions simultaneously. For each function, it maintains a separate request queue, a priority queue for containers, and a set of containers that can execute requests for that function. The scheduler periodically checks the request queues and adjusts the number of containers based on the current load and the average execution time of the function.
-
-The main components of the FPC Scheduler are:
-
-- `Container`: Represents an individual container that can execute requests for a specific function.
-- `Scheduler`: The main coordinator that manages different `FPCSchedulerForFunction` instances for each function.
-- `FPCSchedulerForFunction`: Handles request scheduling, container provisioning, and snapshot management for a specific function.
-- `Request` and `Response`: Represent incoming requests and their corresponding responses.
-
 ## Usage
 
 To run the FPC Scheduler, simply execute the script:
 
-
+```
 python FPCScheduler.py
-
+```
 
 This will simulate requests and responses for two functions (`"function_id_1"` and `"function_id_2"`). You can modify the `function_ids` list in the main script to add or remove functions as needed.
 
@@ -92,4 +93,3 @@ function_id_1 - Updated average function execution time: 0.10779953956604004
 ```
 
 This example output shows the various stages of the FPC Scheduler, including handling requests, creating containers, processing responses, updating average execution times, and renewing snapshots.
-
